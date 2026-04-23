@@ -385,6 +385,61 @@
             margin: 0 auto;
         }
 
+        .report-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            gap: 16px;
+            align-items: center;
+        }
+
+        .report-hero .chip {
+            background: #e8f1ff;
+            color: #1a3d7a;
+        }
+
+        .report-filters {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .report-filters .btn {
+            min-width: 140px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .summary-card {
+            padding: 16px;
+            border: 1px solid #dbe4f7;
+            border-radius: 16px;
+            background: #f7fbff;
+        }
+
+        .summary-card strong {
+            display: block;
+            font-size: 18px;
+            margin-top: 6px;
+            color: #0d2d5e;
+        }
+
+        .payment-pill {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: 800;
+            background: #e7efff;
+            color: #1e3f78;
+        }
+
         table {
             width: 100%;
             border-collapse: separate;
@@ -546,6 +601,7 @@
             .cashier-hero { grid-template-columns: 1fr; }
             .item-row { grid-template-columns: 1fr; }
             .stock-hero { grid-template-columns: 1fr; }
+            .report-hero { grid-template-columns: 1fr; }
         }
     </style>
 </head>
