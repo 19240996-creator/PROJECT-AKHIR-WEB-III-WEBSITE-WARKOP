@@ -138,6 +138,126 @@
             backdrop-filter: blur(5px);
         }
 
+        .dashboard-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            gap: 18px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-hero::after {
+            content: "";
+            position: absolute;
+            inset: -40px -60px auto auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14, 138, 114, 0.45) 0%, transparent 65%);
+            opacity: 0.8;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #1c3f7b;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .hero-panel {
+            background: linear-gradient(140deg, rgba(17, 67, 150, 0.92) 0%, rgba(12, 45, 106, 0.95) 100%);
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 16px;
+            box-shadow: 0 14px 30px rgba(6, 26, 60, 0.35);
+        }
+
+        .hero-panel h3 {
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .hero-panel .small {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            border: 1px solid #dbe4f7;
+            border-radius: 16px;
+            background: #f8fbff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: "";
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(14, 138, 114, 0.18) 0%, transparent 70%);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #335a95;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0d2d5e;
+            margin-bottom: 6px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #e7efff;
+            color: #1e3f78;
+        }
+
+        .rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 10px;
+            background: #103f88;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 12px;
+        }
+
         table {
             width: 100%;
             border-collapse: separate;
@@ -146,6 +266,15 @@
             border-radius: 14px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.88);
+        }
+
+        tbody tr {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(231, 239, 255, 0.7);
+            transform: translateY(-1px);
         }
 
         th {
@@ -286,6 +415,7 @@
             .brand strong { font-size: 28px; }
             th, td { padding: 8px 6px; font-size: 14px; }
             .btn { width: 100%; text-align: center; margin-bottom: 8px; }
+            .dashboard-hero { grid-template-columns: 1fr; }
         }
     </style>
 </head>
