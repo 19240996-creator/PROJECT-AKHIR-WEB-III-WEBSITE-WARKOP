@@ -327,6 +327,64 @@
             margin: 14px 0;
         }
 
+        .stock-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 16px;
+            align-items: center;
+        }
+
+        .stock-hero .chip {
+            background: #fff1d6;
+            color: #7a4b12;
+        }
+
+        .stock-kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .stock-kpi {
+            background: #f6f9ff;
+            border: 1px solid #dbe4f7;
+            border-radius: 14px;
+            padding: 10px 12px;
+        }
+
+        .stock-kpi strong {
+            display: block;
+            font-size: 16px;
+            color: #0d2d5e;
+            margin-top: 4px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .status-low {
+            background: #ffd7cf;
+            color: #7b1f16;
+        }
+
+        .status-ok {
+            background: #daf2e3;
+            color: #1c5e3f;
+        }
+
+        .form-card {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
         table {
             width: 100%;
             border-collapse: separate;
@@ -487,6 +545,7 @@
             .dashboard-hero { grid-template-columns: 1fr; }
             .cashier-hero { grid-template-columns: 1fr; }
             .item-row { grid-template-columns: 1fr; }
+            .stock-hero { grid-template-columns: 1fr; }
         }
     </style>
 </head>

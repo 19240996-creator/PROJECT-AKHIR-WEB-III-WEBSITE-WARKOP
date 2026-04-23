@@ -3,7 +3,7 @@
     <input class="input" type="text" name="name" value="{{ old('name', $stockItem->name ?? '') }}" required>
 </div>
 
-<div class="grid grid-2">
+<div class="form-grid">
     <div>
         <label>Satuan</label>
         <input class="input" type="text" name="unit" value="{{ old('unit', $stockItem->unit ?? 'pcs') }}" required>
@@ -12,11 +12,10 @@
         <label>Jumlah Saat Ini</label>
         <input class="input" type="number" name="quantity" min="0" step="0.01" value="{{ old('quantity', $stockItem->quantity ?? 0) }}" required>
     </div>
-</div>
-
-<div style="margin-top:10px;">
-    <label>Batas Minimum</label>
-    <input class="input" type="number" name="minimum_quantity" min="0" step="0.01" value="{{ old('minimum_quantity', $stockItem->minimum_quantity ?? 0) }}" required>
+    <div>
+        <label>Batas Minimum</label>
+        <input class="input" type="number" name="minimum_quantity" min="0" step="0.01" value="{{ old('minimum_quantity', $stockItem->minimum_quantity ?? 0) }}" required>
+    </div>
 </div>
 
 <div style="margin-top:10px;">

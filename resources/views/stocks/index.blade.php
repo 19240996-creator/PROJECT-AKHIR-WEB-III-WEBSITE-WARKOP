@@ -3,15 +3,36 @@
 @section('title', 'Stok Barang')
 
 @section('content')
-    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+    <section class="card stock-hero">
         <div>
-            <h1>Stok Barang</h1>
-            <p class="small">Pantau bahan baku. Notifikasi stok menipis: <strong>{{ $lowStockCount }}</strong> item.</p>
+            <div class="hero-eyebrow">Stok Barang</div>
+            <h1>Kontrol bahan baku lebih mudah</h1>
+            <p class="small">Pantau stok, catatan, dan status menipis agar operasional tetap lancar.</p>
+            <div class="hero-actions">
+                <a href="{{ route('stocks.create') }}" class="btn">+ Tambah Stok</a>
+                <a href="#daftar-stok" class="btn btn-muted">Lihat Daftar</a>
+            </div>
         </div>
-        <a href="{{ route('stocks.create') }}" class="btn">+ Tambah Stok</a>
-    </div>
+        <div>
+            <span class="chip">{{ $lowStockCount }} item menipis</span>
+            <div class="stock-kpis">
+                <div class="stock-kpi">
+                    <span class="small">Total Item</span>
+                    <strong>{{ $stockItems->total() }}</strong>
+                </div>
+                <div class="stock-kpi">
+                    <span class="small">Status Aman</span>
+                    <strong>{{ max($stockItems->total() - $lowStockCount, 0) }}</strong>
+                </div>
+                <div class="stock-kpi">
+                    <span class="small">Butuh Tindak</span>
+                    <strong>{{ $lowStockCount }}</strong>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="card">
+    <div class="card" id="daftar-stok">
         <table>
             <thead>
                 <tr>
@@ -31,9 +52,9 @@
                         <td>{{ number_format($stock->minimum_quantity, 2, ',', '.') }}</td>
                         <td>
                             @if ($stock->quantity <= $stock->minimum_quantity)
-                                <span class="badge" style="background:#ffd7cf;color:#7b1f16;">Menipis</span>
+                                <span class="status-badge status-low">Menipis</span>
                             @else
-                                <span class="badge" style="background:#daf2e3;color:#1c5e3f;">Aman</span>
+                                <span class="status-badge status-ok">Aman</span>
                             @endif
                         </td>
                         <td>{{ $stock->note ?: '-' }}</td>

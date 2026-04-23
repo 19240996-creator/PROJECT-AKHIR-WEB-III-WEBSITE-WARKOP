@@ -3,7 +3,7 @@
 @section('title', 'Edit Stok')
 
 @section('content')
-    <div class="card">
+    <div class="card form-card">
         <h1>Edit Stok Barang</h1>
         <form action="{{ route('stocks.update', $stockItem) }}" method="POST">
             @csrf
