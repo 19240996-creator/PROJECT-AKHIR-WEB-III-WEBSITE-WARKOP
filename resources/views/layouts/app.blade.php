@@ -258,6 +258,75 @@
             font-size: 12px;
         }
 
+        .cashier-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+            gap: 18px;
+            align-items: center;
+            position: relative;
+        }
+
+        .cashier-hero .chip {
+            background: #def4ee;
+            color: #0a6b58;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .quick-stat {
+            background: #f5f9ff;
+            border: 1px solid #dbe4f7;
+            border-radius: 14px;
+            padding: 10px 12px;
+        }
+
+        .quick-stat strong {
+            display: block;
+            font-size: 16px;
+            color: #0d2d5e;
+            margin-top: 4px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .item-row {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto;
+            gap: 8px;
+            padding: 10px;
+            border: 1px dashed #cad7f6;
+            border-radius: 14px;
+            background: #f9fbff;
+            align-items: end;
+        }
+
+        .item-row + .item-row {
+            margin-top: 8px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: #dbe4f7;
+            margin: 14px 0;
+        }
+
         table {
             width: 100%;
             border-collapse: separate;
@@ -416,6 +485,8 @@
             th, td { padding: 8px 6px; font-size: 14px; }
             .btn { width: 100%; text-align: center; margin-bottom: 8px; }
             .dashboard-hero { grid-template-columns: 1fr; }
+            .cashier-hero { grid-template-columns: 1fr; }
+            .item-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>

@@ -3,39 +3,67 @@
 @section('title', 'Kasir')
 
 @section('content')
-    <div class="card">
-        <h1>Kasir Warkop</h1>
-        <p class="small">Buat transaksi baru, lalu cetak struk customer dan struk kasir.</p>
-    </div>
+    <section class="card cashier-hero">
+        <div>
+            <div class="hero-eyebrow">Kasir Warkop</div>
+            <h1>Transaksi cepat, rapi, dan siap cetak</h1>
+            <p class="small">Buat pesanan baru, pantau menu aktif, lalu cetak struk pelanggan dan kasir.</p>
+            <div class="hero-actions">
+                <a class="btn" href="#transaksi-baru">Mulai Transaksi</a>
+                <a class="btn btn-muted" href="#menu-aktif">Cek Menu Aktif</a>
+                <a class="btn btn-muted" href="#riwayat">Riwayat Terbaru</a>
+            </div>
+        </div>
+        <div>
+            <div class="chip">Siap melayani pelanggan</div>
+            <div class="quick-stats">
+                <div class="quick-stat">
+                    <span class="small">Menu Aktif</span>
+                    <strong>{{ $menus->count() }}</strong>
+                </div>
+                <div class="quick-stat">
+                    <span class="small">Riwayat Tampil</span>
+                    <strong>{{ $recentOrders->count() }}</strong>
+                </div>
+                <div class="quick-stat">
+                    <span class="small">Metode</span>
+                    <strong>Cash & QRIS</strong>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="grid grid-2">
+    <div class="grid grid-2" id="transaksi-baru">
         <section class="card">
-            <h2>Transaksi Baru</h2>
+            <div class="panel-title">
+                <h2>Transaksi Baru</h2>
+                <span class="badge">Siap diproses</span>
+            </div>
             <form action="{{ route('cashier.store') }}" method="POST" id="order-form">
                 @csrf
                 <input type="hidden" name="client_ordered_at" id="client_ordered_at">
 
-                <div style="margin-bottom:10px;">
-                    <label>Nama Customer</label>
-                    <input class="input" type="text" name="customer_name" value="{{ old('customer_name') }}" placeholder="Contoh: Meja 7" required>
-                </div>
-
-                <div style="margin-bottom:10px;">
-                    <label>Nama Kasir</label>
-                    <input class="input" type="text" name="cashier_name" value="{{ old('cashier_name', 'Kasir Warkop') }}">
-                </div>
-
-                <div style="margin-bottom:10px;">
-                    <label>Metode Pembayaran</label>
-                    <select name="payment_method" class="input">
-                        <option value="cash">Cash</option>
-                        <option value="qris">QRIS</option>
-                    </select>
+                <div class="form-grid" style="margin-bottom:10px;">
+                    <div>
+                        <label>Nama Customer</label>
+                        <input class="input" type="text" name="customer_name" value="{{ old('customer_name') }}" placeholder="Contoh: Meja 7" required>
+                    </div>
+                    <div>
+                        <label>Nama Kasir</label>
+                        <input class="input" type="text" name="cashier_name" value="{{ old('cashier_name', 'Kasir Warkop') }}">
+                    </div>
+                    <div>
+                        <label>Metode Pembayaran</label>
+                        <select name="payment_method" class="input">
+                            <option value="cash">Cash</option>
+                            <option value="qris">QRIS</option>
+                        </select>
+                    </div>
                 </div>
 
                 <h3>Item Pesanan</h3>
                 <div id="item-list">
-                    <div class="item-row" style="display:grid;grid-template-columns:2fr 1fr auto;gap:8px;margin-bottom:8px;align-items:end;">
+                    <div class="item-row">
                         <div>
                             <label>Menu</label>
                             <select class="input" name="items[0][menu_id]" required>
@@ -55,6 +83,8 @@
                     </div>
                 </div>
 
+                <div class="section-divider"></div>
+
                 <button type="button" class="btn btn-muted" onclick="addRow()">+ Tambah Item</button>
 
                 <div style="margin-top:12px;">
@@ -63,7 +93,7 @@
             </form>
         </section>
 
-        <section class="card">
+        <section class="card" id="menu-aktif">
             <h2>Daftar Menu Aktif</h2>
             <table>
                 <thead>
@@ -99,8 +129,8 @@
         </section>
     </div>
 
-    <section class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+    <section class="card" id="riwayat">
+        <div class="panel-title">
             <h2>Riwayat Transaksi Terbaru</h2>
             <form action="{{ route('cashier.recent.reset') }}" method="POST" onsubmit="return confirm('Reset riwayat transaksi terbaru? Data laporan tidak akan dihapus.');">
                 @csrf
